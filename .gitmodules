@@ -1,0 +1,4 @@
+[submodule "thirdparty/libfm-qt"]
+	path = thirdparty/libfm-qt
+	url = https://github.com/lxqt/libfm-qt
+	branch = wip_qt6
