@@ -25,6 +25,7 @@ Window {
     
     
     ListView {
+        id: itemsView
         anchors.margins: 10
         boundsBehavior: Flickable.StopAtBounds
         anchors.fill: parent
@@ -35,7 +36,7 @@ Window {
         }
         
         delegate: Item {
-            width: parent.width
+            width: itemsView.width
             height: layout.height
             Drag.dragType: Drag.Automatic
             Drag.active: dragArea.drag.active
