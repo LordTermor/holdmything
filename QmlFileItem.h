@@ -2,8 +2,8 @@
 
 #include <QQuickItem>
 #include <QAbstractListModel>
-#include <libfm-qt6/core/fileinfo.h>
 #include <QList>
+#include <QFileInfo>
 
 class QmlFileItem
 {
@@ -19,7 +19,7 @@ public:
     void setKeys(const QStringList& keys){m_keys=keys;}
     
 protected:
-    Fm::FileInfoPtr info;
+    QFileInfo info;
     QUrl m_url;
     QStringList m_keys;
 };

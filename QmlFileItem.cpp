@@ -1,7 +1,10 @@
 #include "QmlFileItem.h"
 #include <QUrl>
-#include <libfm-qt6/core/thumbnailjob.h>
 #include <QBuffer>
+#include <QPixmap>
+#include <QFileIconProvider>
+
+static QFileIconProvider provider;
 
 QUrl imageToUrl(const QPixmap& image)
 {
@@ -14,22 +17,18 @@ QUrl imageToUrl(const QPixmap& image)
 }
 
 QmlFileItem::QmlFileItem(const QUrl &url)
-    :m_url(url)
+    :m_url(url), info(url.toString(QUrl::RemoveScheme))
 {
-    auto* gfile = g_file_new_for_path(url.toString(QUrl::RemoveScheme).toUtf8());
-    GError* err = nullptr;
-    Fm::GObjectPtr<GFileInfo> ginfo(g_file_query_info(gfile, "*", GFileQueryInfoFlags(), nullptr, &err));
-    
-    info = std::make_shared<Fm::FileInfo>(ginfo, Fm::FilePath(gfile, false));
+  
 }
 
 QUrl QmlFileItem::icon() const
 {
-    return imageToUrl(info->icon()->qicon().pixmap({64,64}));
+    return imageToUrl(provider.icon(info).pixmap({64,64}));
     
 }
 
 QString QmlFileItem::name() const
 {
-    return QString::fromStdString(info->name());
+    return info.fileName();
 }
