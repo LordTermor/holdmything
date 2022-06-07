@@ -2,7 +2,7 @@
 
 #include <QAbstractListModel>
 
-#include <QmlFileItem.h>
+#include "QmlFileItem.h"
 
 class QmlFileItemModel: public QAbstractListModel {
     Q_OBJECT

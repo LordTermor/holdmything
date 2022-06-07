@@ -24,7 +24,7 @@ void QmlFileItemModel::removeItem(const QUrl &url)
     auto index = std::distance(m_list.begin(), it);
     beginRemoveRows(QModelIndex(), index, index);
     
-    m_list.remove(index);
+    m_list.removeAt(index);
     
     endRemoveRows();
     

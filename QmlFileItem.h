@@ -7,6 +7,7 @@
 
 class QmlFileItem
 {
+    Q_GADGET
 public:
     QmlFileItem(const QUrl& url);
     
